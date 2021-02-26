@@ -1,0 +1,62 @@
+#all {
+    background-color: black;
+    width: 334;
+    height: 395;
+    border-radius: 34px;
+}
+#imei {
+    color: brown;
+    background-color: white;
+    margin: 33;
+    padding: 6;
+    border-color: crimson;
+    border-radius: 23px 24px 3px;
+    text-align: center;
+}
+#submit {
+    color: mintcream;
+    background-color: black;
+    border-radius: 3px 0px 18px 18px;
+    font-size: medium;
+    font-family: -webkit-body;
+    border-color: orangered;
+}
+#text {
+    color: darkgreen;
+}
+em#result {
+    color: gold;
+    font-size: 19;
+}
+em#unlock {
+    color: darkred;
+}
+em#flash {
+    color: darkred;
+}
+#imei:hover {
+    background-color: darkorange;
+    color: ghostwhite;
+    border-color: goldenrod;
+}
+#submit:hover {
+    border-color: coral;
+    color: coral;
+}
+#text:hover {
+    color: chartreuse;
+}
+body {
+    background-color: brown;
+}
+h1#h {
+    color: aliceblue;
+    padding: 15;
+    font-size: large;
+}
+h1#h:hover {
+    color: burlywood;
+}
+em {
+color :brown; 
+}

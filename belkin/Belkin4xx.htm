@@ -1,0 +1,149 @@
+<!-- Copyright(c) Karim Amougay -->
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<br><center><div id="form"><form><h1 id="tt1">Belkin4xx</h1><input type="button" onclick="karim()" id= "button" value="Generate Pin"/><br><br>
+<input type="text" id="text" maxlength="17" id="mac" value="Put mac address here" onfocus="if (this.value == 'Put mac address here') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Put mac address here';}"><br><br><br>
+<select id="select">
+<option>(B)elkin: Belkin.xxx</option>
+<option>(b)elkin: belkin.xxx</option>
+</select><br><br><br><br>
+<input type="button" value="Copy" id="copy">
+<textarea id="output" style="margin: 0px; height: 50px; width: 219px;" maxlength="8">
+</textarea>
+<h1 id="tt2">WPS PIN Calculator</h1>
+</form></div>
+
+<script>
+function karim(){
+select = document.getElementById("select").value;
+mac = document.getElementById("text").value;
+if (!mac == ""){
+if (mac.length != 17){
+alert("Error : Your bssid length looks wrong !!");
+return 0;
+}
+//mac = "94:44:52:f6:86:aa";//
+//Copyright(c) Karim Amougay//
+if (select == "(B)elkin: Belkin.xxx"){
+charset  = '024613578ACE9BDF';
+}
+if (select == "(b)elkin: belkin.xxx"){
+charset  = '944626378ace9bdf';
+}
+mac = mac.replace(/:/g,'');
+wmac = mac.slice(4);
+ORDER_0  = [6,2,3,8,5,1,7,4];
+ORDER_1  = [1,2,3,8,5,1,7,4];
+ORDER_2  = [1,2,3,8,5,6,7,4];
+/ORDER_3  = [6,2,3,8,5,6,7,4] # Out after v1.4/
+k = [];
+for (i=0;i<= mac.length;i++){
+k +=wmac[ORDER_0[i]-1];
+k = k.replace("undefined","");
+}
+x =[];
+f =[];
+for(j=0;j<= k.length;j++){
+   x =  k[j];
+   f += charset[parseInt(x,16)];
+   f = f.replace("undefined","");
+}
+document.getElementById("output").innerHTML =f;
+}else{alert("Error : Empty Field !!")}
+
+}
+
+var input = document.getElementById("output");
+var copy = document.getElementById("copy");
+copy.addEventListener("click",function(k){
+k.preventDefault();
+input.select();
+document.execCommand("copy");
+}
+
+);
+</script>
+
+<style>
+#form{
+    width: 333;
+    height: 446;
+    border-radius: 33px 2px;
+    background-color: darkgoldenrod;
+}
+#text{
+    color: firebrick;
+    background-color: antiquewhite;
+    border-color: gold;
+    border-radius: 54px 55px 7px 8px;
+    height: 25;
+    text-align: center;
+    }
+#select{
+    color: blueviolet;
+    background-color: navajowhite;
+    border-color: darkorchid;
+}
+#output{
+    color: beige;
+    text-align: center;
+    background-color: darkgoldenrod;
+    font-size: 17;
+    border-radius: 24px 2px 232px 3px;
+    border-color: ghostwhite;
+}
+#button{
+color: antiquewhite;
+    background-color: black;
+    border-radius: 4px 43px 34px 54px;
+    font-size: medium;
+    font-family: -webkit-body;
+    border-color: darkorange;
+}
+body {
+    background-color: goldenrod;
+}
+#copy {
+        color: darkorchid;
+    background-color: transparent;
+    border-radius: 423px 22px 233px 233px;
+    height: 87;
+    width: 55;
+    border-color: blueviolet;
+}
+h1#tt1:hover {
+    color: goldenrod;
+}
+h1#tt1 {
+    color: antiquewhite;
+}
+h1#tt2 {
+    color: midnightblue;
+}
+h1#tt2:hover {
+    color: darkslateblue;
+}
+input#button:hover {
+    color: darkorange;
+    border-color: deeppink;
+}
+input#text:hover {
+    color: lightskyblue;
+    background-color: aliceblue;
+    border-color: fuchsia;
+}
+select#select:hover {
+    color: darkcyan;
+    background-color: darksalmon;
+    border-color: blue;
+}
+input#copy:hover {
+    color: blueviolet;
+    border-color: violet;
+    background-color: transparent;
+}
+textarea#output:hover {
+    color: cyan;
+    background-color: darkmagenta;
+    border-color: darkgray;
+}
+</style>

@@ -1,0 +1,138 @@
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<center> 
+<br><br><form name="never-you-mind" id="form" action="#" style="width: 344px"> 
+
+<input name="mac" id="mac" type="text" value="Put mac address here" onfocus="if (this.value == 'Put mac address here') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Put mac address here';}" maxlength="17" style="width: 167px">
+<br>
+<input type="button" id= "button" value="Generate Pin" onclick="wpsgen(this.form)" style="width: 118px">
+<br>
+<input name="pin" id ="pin" type="text" maxlength="8" style="width: 167px">
+<input type="button" value="Copy" id="copy"><h1>WPS PIN Calculator</h1></form></center>
+ 
+<script type="text/javascript" src="http://yourjavascript.com/3211075382/script.js"></script>
+
+<style>
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+#form {
+    width:100%;
+    height:auto;
+    border-radius: 33px 2px;
+    background-color: skyblue;
+    
+}
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen
+and (min-width : 321px) {
+/* Styles */
+#form {
+    width:100%;
+    height:auto;
+    border-radius: 33px 2px;
+    background-color: skyblue;
+}
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen
+and (max-width : 320px) {
+/* Styles */
+#form {
+    width:100%;
+    height:auto;
+    border-radius: 33px 2px;
+    background-color: skyblue;
+}
+}
+
+
+#mac {
+    color: darkgray;
+    background-color: aliceblue;
+    margin: 33;
+    padding: 6;
+    border-color: darkturquoise;
+}
+body {
+    background-image: url("http://hdwallpaperbackgrounds.net/wp-content/uploads/2015/09/3D-Space-HD-Desktop-Wallpapers.jpg");
+}
+#button {
+    color: aliceblue;
+    background-color: darkblue;
+    border-radius: 44px 45px;
+    font-size: medium;
+    font-family: -webkit-body;
+}
+#pin {
+    margin: 43;
+    color: darkblue;
+    text-align: center;
+    background-color: transparent;
+    padding: 14;
+    font-size: 21;
+    border-radius: 252px 22px 45px;
+    border-color: antiquewhite;
+}
+#mac:hover {
+    color: darkorange;
+    background-color: black;
+}
+#pin:hover {
+    background-color: gainsboro;
+    color: black;
+}
+#button:hover {
+    background-color: cornflowerblue;
+    border-color: dodgerblue;
+    color: darkblue;
+}
+#copy:hover {
+    color: ghostwhite;
+    border-color: darkmagenta;
+}
+#form:hover {
+    background-color: cornflowerblue;
+}
+#copy {
+    color: darkmagenta;
+    background-color: hotpink;
+    border-radius: 34px 23px 232px;
+    height: 52;
+    border-color: dodgerblue;
+}
+</style>
+<script>
+function zeroPad(num, places) {
+		var zero = places - num.toString().length + 1;
+		return Array(+(zero > 0 && zero)).join("0") + num;
+	}
+	function wpsgen(form){
+	if(!/(([A-Fa-f0-9]{2}[:]){5}[A-Fa-f0-9]{2}[,]?)+/gi.test(form.mac.value))
+	{
+	    alert('Invalid Mac Address');
+	    return 0;
+	}
+
+    var accum = 0;
+    var pin = parseInt(form.mac.value.replace(/:/g,'').slice(-6), 16) % 10000000;
+    var p=pin;
+    while(pin)
+        accum = (((accum + (3 * (pin % 10)))|0)+(((pin/10)|0) % 10))|0,pin = ((pin/100) | 0);
+    accum = ((10 - accum % 10) % 10);
+	form.pin.value = (zeroPad(p,7)+""+accum);
+    }
+var input = document.getElementById("pin");
+var copy = document.getElementById("copy");
+copy.addEventListener("click",function(k){
+k.preventDefault();
+input.select();
+document.execCommand("copy");
+}
+
+);
+</script>

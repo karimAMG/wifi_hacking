@@ -1,0 +1,22 @@
+<input type="text" name="localPin" id="mac" size="12" maxlength="10" value="39106438">
+
+<input type="button" value="Regenerate PIN" name="genPIN" onClick="genPinClicked()">
+
+<script>
+function genPinClicked()
+{
+var num_str="1";
+var rand_no;
+var num;
+while (num_str.length != 7) {
+rand_no = Math.random()*1000000000;
+num = parseInt(rand_no, 10);
+num = num%10000000;
+num_str = num.toString();
+}
+num = num*10 + compute_pin_checksum(num);
+num = parseInt(num, 10);
+document.getElementById("mac").value= num;
+alert(warn_msg3);
+}
+</script>
